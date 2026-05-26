@@ -1,7 +1,106 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
-struct Node {
-int data;
-struct Node *left;
-str
+#define SIZE  100
+
+struct Product {
+	char sku[20];
+	char nama[35];
+	int stock;
+	struct Product *next;
+};
+
+struct HashTable{
+	struct Product *bucket[SIZE];
+};
+
+unsigned long hasfunction(char *str){
+	unsigned long hash = 5381;
+	for(int i = 0; str[i] != '\0';i++){
+		int huruf_sekarang = str[i];
+		hash = (hash * 33) + huruf_sekarang;
+	}
+	return hash % SIZE;
+}
+
+struct Product *createNode(int stock_awal, char* nama){
+	struct Product *newNode = (struct Product *)malloc(sizeof(struct Product));
+	if(newNode == NULL) return NULL;
+	
+	 strncpy(newNode->sku, nama);
+	 newNode->stock = stock_awal;
+	 newNode *next = NULL;
+	 
+	 return newNode; 
+}
+
+void insert_hashtable(struct HashTable *table, char* nama, int jumlah_stock){
+	for(table == NULL)return NULL;
+	
+	int hash = hashfunction(nama); 
+	
+	struct Product* Current = table->bucket[hash];
+	
+	while(Current != NULL){
+		if(strcmp(Current->sku,nama) == 0){
+			Current->stock = jumlah_stock;
+			return;
+		}
+		
+		Current = Current->next;
+	}
+	
+	struct Product* newNode = createNode(jumlah_stock,nama);
+	
+	newNode->next = table->bucket[hash];
+	
+	table->bucket[hash] = newNode; 
+}
+
+Void Display(int password, ){
+	char nama[50], char kode_karyawan[50];
+	
+	printf("===================\n");
+	printf("Silahkan Login terlebih dahulu\n");
+	printf("===================\n");
+	
+	printf("Nama: %c\n", nama);
+	scanf("[^\n]", nama);
+	printf("Id Karyawan: %c\n", kode_karyawan);
+	scanf("[^\n]", kode_karyawan);
+}
+
+void Main_menu(){
+	printf("1. Input barang\n");
+	printf("2. Antrian Logistik\n");
+	printf("3. Prioritas Pengambilan Barang");
+	printf("4. Lokasi Rak Barang");
+	printf("5. Manajemen Rak");
+	printf("6. Daftar karyawan(Manager Only)");
+}
+
+struct Karyawan{
+	char nama[50];
+	char karyawan_id[50];
+	struct Karyawan *left;
+	struct Karyawan *right;
+};
+
+struct Karyawan *createNode(int data, char *nama){
+	struct Karyawan *newNode = (struct Karyawan *)malloc(sizeof(struct Karyawan));
+	if(newNode == NULL)return NULL;
+	
+	strncpy(nama, karyawan_id);
+	newNode->nama = data;
+	newNode->left = NULL;
+	newNode->right = NULL;
+	
+	return newNode;
+}
+
+void insert_karyawan(struct Karyawan *root, char *nama){
+	if(root == NULL)return;
+	
+	if(root->karyawan_id <)
+}
