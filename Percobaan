@@ -104,3 +104,36 @@ void insert_karyawan(struct Karyawan *root, char *nama){
 	
 	if(root->karyawan_id <)
 }
+struct Karyawan{
+	char nama[50];
+	char karyawan_id[50];
+	struct Karyawan *left;
+	struct Karyawan *right;
+};
+
+struct Karyawan *createNode(int data, char *nama){
+	struct Karyawan *newNode = (struct Karyawan *)malloc(sizeof(struct Karyawan));
+	if(newNode == NULL)return NULL;
+	
+	strncpy(newNode->karyawan_id, id);
+	strcpy(newNode->nama, nama);
+	
+	newNode->left = NULL;
+	newNode->right = NULL;
+	
+	return newNode;
+}
+
+void insert_karyawan(struct Karyawan *root, char *nama){
+	if(root == NULL)return createNode(id, nama);
+	
+	int urutan = strcmp(id, root->karyawan_id);
+	if(urutan > 0){
+		root->left = insert_karyawan(root->left, id, nama);
+	} else if(urutan < 0){
+		root->right = insert_karyawan(root->right, id, nama);
+	}
+	
+	return root;
+}
+
